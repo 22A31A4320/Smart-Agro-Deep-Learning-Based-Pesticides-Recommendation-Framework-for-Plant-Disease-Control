@@ -7,7 +7,7 @@
 
 body {
   background: #0b1f17;
-  color: #fff;
+  color: white;
   overflow: hidden;
 }
 
@@ -29,8 +29,8 @@ body {
 /* Sidebar */
 .sidebar {
   width: 220px;
-  background: linear-gradient(180deg, #0f5132, #083d2a);
   padding: 20px;
+  background: linear-gradient(180deg, #0f5132, #083d2a);
 }
 
 .sidebar h2 {
@@ -75,26 +75,56 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Top Nav */
+/* Top Navigation */
 .top-nav {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
-.top-nav span {
-  font-weight: bold;
+.top-tab {
   cursor: pointer;
+  padding: 8px 15px;
+  transition: all 0.3s ease;
 }
 
-/* Upload Box */
+.top-tab.active {
+  color: #20c997;
+  border-bottom: 3px solid #20c997;
+}
+
+/* Top Tab Content */
+.top-content {
+  position: relative;
+  height: 120px;
+  overflow: hidden;
+}
+
+.top-panel {
+  position: absolute;
+  width: 100%;
+  left: 100%;
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+.top-panel.active {
+  left: 0;
+  opacity: 1;
+}
+
+.top-panel.exit {
+  left: -100%;
+  opacity: 0;
+}
+
+/* Upload */
 .upload-box {
   width: 70%;
-  margin: auto;
+  margin: 40px auto;
   padding: 40px;
   background: rgba(255,255,255,0.08);
   border-radius: 20px;
-  backdrop-filter: blur(10px);
   text-align: center;
 }
 
@@ -109,11 +139,10 @@ body {
 
 .upload-btn {
   padding: 12px 25px;
+  background: #20c997;
   border: none;
   border-radius: 10px;
-  background: #20c997;
   cursor: pointer;
-  font-size: 16px;
 }
 
 /* Result */
@@ -132,17 +161,36 @@ body {
   text-align: center;
 }
 
+/* 🍀 RANDOM LEAF FALL */
+.leaf-confetti {
+  position: fixed;
+  top: -40px;
+  font-size: 30px;
+  pointer-events: none;
+  z-index: 9999;
+  animation-name: leafFall;
+  animation-timing-function: linear;
+}
+
+@keyframes leafFall {
+  0% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(var(--sway)) rotate(calc(var(--rotate) / 2));
+  }
+  100% {
+    transform: translateX(calc(var(--sway) * -1))
+               translateY(110vh)
+               rotate(var(--rotate));
+    opacity: 0;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-  .sidebar {
-    width: 70px;
-  }
-
-  .sidebar h2 {
-    display: none;
-  }
-
-  .upload-box, .result-card {
-    width: 95%;
-  }
+  .sidebar { width: 70px; }
+  .sidebar h2 { display: none; }
+  .upload-box, .result-card { width: 95%; }
 }
