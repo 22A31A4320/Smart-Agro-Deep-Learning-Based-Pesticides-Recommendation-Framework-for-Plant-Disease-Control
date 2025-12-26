@@ -58,7 +58,7 @@ animateParticles();
    AGRICULTURE CONFETTI 🍀
 ====================== */
 function launchConfetti() {
-  for (let i = 0; i < 500; i++) {
+  for (let i = 0; i < 50; i++) {
     const leaf = document.createElement("span");
     leaf.textContent = "🍀";
     leaf.style.position = "fixed";
