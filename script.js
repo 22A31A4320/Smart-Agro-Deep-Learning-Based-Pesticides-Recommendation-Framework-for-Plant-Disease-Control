@@ -1,5 +1,5 @@
 /* ======================
-   TAB SWITCHING
+   MAIN TAB SWITCH
 ====================== */
 function showTab(tabId) {
   document.querySelectorAll(".tab").forEach(tab =>
@@ -14,6 +14,28 @@ function showTab(tabId) {
   }
 }
 
+/* ======================
+   TOP TAB SLIDE
+====================== */
+function switchTopTab(id, el) {
+  const panels = document.querySelectorAll(".top-panel");
+  const tabs = document.querySelectorAll(".top-tab");
+
+  panels.forEach(panel => {
+    if (panel.classList.contains("active")) {
+      panel.classList.add("exit");
+      setTimeout(() => {
+        panel.classList.remove("active", "exit");
+      }, 600);
+    }
+  });
+
+  document.getElementById(id).classList.add("active");
+
+  tabs.forEach(tab => tab.classList.remove("active"));
+  el.classList.add("active");
+}
+
 /* Upload */
 function uploadImage() {
   document.getElementById("imageUpload").click();
@@ -26,8 +48,8 @@ const canvas = document.getElementById("particleCanvas");
 const ctx = canvas.getContext("2d");
 
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
 }
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
@@ -55,45 +77,44 @@ function animateParticles() {
 animateParticles();
 
 /* ======================
-   AGRICULTURE CONFETTI 🍀
+   🍀 RANDOM LEAF FALL
 ====================== */
 function launchConfetti() {
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 60; i++) {
     const leaf = document.createElement("span");
     leaf.textContent = "🍀";
-    leaf.style.position = "fixed";
-    leaf.style.left = Math.random() * 100 + "vw";
-    leaf.style.top = "-30px";
-    leaf.style.fontSize = "30px";
-    leaf.style.pointerEvents = "none";
-    leaf.style.animation = "fall 3.5s linear";
-    document.body.appendChild(leaf);
+    leaf.className = "leaf-confetti";
 
-    setTimeout(() => leaf.remove(), 3500);
+    const startX = Math.random() * window.innerWidth;
+    const duration = 3 + Math.random() * 3;
+    const sway = Math.random() * 120 - 60;
+    const rotation = Math.random() * 720 - 360;
+
+    leaf.style.left = `${startX}px`;
+    leaf.style.animationDuration = `${duration}s`;
+    leaf.style.setProperty("--sway", `${sway}px`);
+    leaf.style.setProperty("--rotate", `${rotation}deg`);
+
+    document.body.appendChild(leaf);
+    setTimeout(() => leaf.remove(), duration * 1000);
   }
 }
 
 /* ======================
-   LEAF NAME DISPLAY
+   LEAF NAME
 ====================== */
 function showLeafName(name) {
   const leaf = document.getElementById("leafName");
   leaf.textContent = `Detected Leaf: ${name}`;
-  leaf.style.opacity = 0;
-  leaf.style.animation = "leafFade 1s forwards";
+  leaf.style.animation = "none";
+  leaf.offsetHeight;
+  leaf.style.animation = "fadeLeaf 1s forwards";
 }
 
-/* ======================
-   DYNAMIC STYLES
-====================== */
+/* Leaf fade */
 const style = document.createElement("style");
 style.innerHTML = `
-@keyframes fall {
-  to { transform: translateY(110vh) rotate(360deg); }
-}
-
-@keyframes leafFade {
+@keyframes fadeLeaf {
   to { opacity: 1; }
-}
-`;
+}`;
 document.head.appendChild(style);
