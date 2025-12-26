@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Agro | Deep Learning Pesticide Recommendation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<div class="app">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>🌱 Smart Agro</h2>
+    <button onclick="showTab('home')">🏠 Home</button>
+    <button onclick="showTab('result')">📊 Result</button>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+
+    <!-- HOME TAB -->
+    <section id="home" class="tab active">
+      <nav class="top-nav">
+        <span>Disease</span>
+        <span>Pesticides</span>
+        <span>About</span>
+      </nav>
+
+      <div class="upload-box">
+        <div class="image-preview">
+          <p>📷 Upload Leaf Image</p>
+        </div>
+        <input type="file" id="imageUpload" hidden>
+        <button class="upload-btn" onclick="uploadImage()">Upload</button>
+      </div>
+    </section>
+
+    <!-- RESULT TAB -->
+    <section id="result" class="tab">
+      <h1>🌾 Analysis Result</h1>
+
+      <div class="result-card">
+        <p><strong>Disease:</strong> Leaf Blight 🍃</p>
+        <p><strong>Recommended Pesticide:</strong> Neem Oil 🧪</p>
+        <p><strong>Confidence:</strong> 92%</p>
+      </div>
+
+      <button class="confetti-btn" onclick="launchConfetti()">
+        🎉 Show Agriculture Effect
+      </button>
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
