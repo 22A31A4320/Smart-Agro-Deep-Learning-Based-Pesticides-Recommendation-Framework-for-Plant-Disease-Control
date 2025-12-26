@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #0b1f17;
+  overflow: hidden;
+  color: white;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: linear-gradient(180deg, #0f5132, #083d2a);
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sidebar button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  background: #198754;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.sidebar button:hover {
+  transform: scale(1.05);
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding: 30px;
+}
+
+.tab {
+  display: none;
+  animation: fade 0.6s ease;
+}
+
+.tab.active {
+  display: block;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Top Nav */
+.top-nav {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+.top-nav span {
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.top-nav span:hover {
+  color: #20c997;
+}
+
+/* Upload Box */
+.upload-box {
+  width: 70%;
+  margin: auto;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.08);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transform: perspective(800px) rotateX(5deg);
+}
+
+.image-preview {
+  height: 200px;
+  border: 2px dashed #20c997;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.upload-btn {
+  padding: 12px 25px;
+  border: none;
+  background: #20c997;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Result */
+.result-card {
+  background: rgba(255,255,255,0.1);
+  padding: 30px;
+  border-radius: 20px;
+  width: 60%;
+  margin: auto;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.confetti-btn {
+  display: block;
+  margin: 40px auto;
+  padding: 15px 30px;
+  font-size: 16px;
+  background: #ffc107;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 70px;
+  }
+  .sidebar h2 {
+    display: none;
+  }
+  .upload-box, .result-card {
+    width: 95%;
+  }
+}
