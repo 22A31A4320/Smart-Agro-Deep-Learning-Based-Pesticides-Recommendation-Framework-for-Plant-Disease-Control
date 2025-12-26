@@ -7,34 +7,48 @@
 </head>
 <body>
 
-<!-- Background Canvas -->
 <canvas id="particleCanvas"></canvas>
 
 <div class="app">
 
-  <!-- LEFT SIDEBAR -->
+  <!-- SIDEBAR -->
   <aside class="sidebar">
     <h2>🌱 Smart Agro</h2>
     <button onclick="showTab('home')">🏠 Home</button>
     <button onclick="showTab('result')">📊 Result</button>
   </aside>
 
-  <!-- MAIN CONTENT -->
+  <!-- CONTENT -->
   <main class="content">
 
     <!-- HOME TAB -->
     <section id="home" class="tab active">
+
+      <!-- TOP TABS -->
       <nav class="top-nav">
-        <span>Disease</span>
-        <span>Pesticides</span>
-        <span>About</span>
+        <span class="top-tab active" onclick="switchTopTab('disease', this)">Disease</span>
+        <span class="top-tab" onclick="switchTopTab('pesticide', this)">Pesticides</span>
+        <span class="top-tab" onclick="switchTopTab('about', this)">About</span>
       </nav>
 
+      <!-- TOP TAB CONTENT -->
+      <div class="top-content">
+        <div id="disease" class="top-panel active">
+          <p>AI-based plant disease detection using deep learning.</p>
+        </div>
+        <div id="pesticide" class="top-panel">
+          <p>Smart pesticide recommendations for detected disease.</p>
+        </div>
+        <div id="about" class="top-panel">
+          <p>Smart Agro – DL based pesticide recommendation framework.</p>
+        </div>
+      </div>
+
+      <!-- UPLOAD -->
       <div class="upload-box">
         <div class="image-preview">
           <p>📷 Upload Leaf Image</p>
         </div>
-
         <input type="file" id="imageUpload" accept="image/*" hidden>
         <button class="upload-btn" onclick="uploadImage()">Upload</button>
       </div>
