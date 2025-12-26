@@ -2,22 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Smart Agro | Deep Learning Pesticide Recommendation</title>
+  <title>Smart Agro | DL Pesticide Recommendation</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- Background Canvas -->
 <canvas id="particleCanvas"></canvas>
 
 <div class="app">
-  <!-- Sidebar -->
+
+  <!-- LEFT SIDEBAR -->
   <aside class="sidebar">
     <h2>🌱 Smart Agro</h2>
     <button onclick="showTab('home')">🏠 Home</button>
     <button onclick="showTab('result')">📊 Result</button>
   </aside>
 
-  <!-- Main Content -->
+  <!-- MAIN CONTENT -->
   <main class="content">
 
     <!-- HOME TAB -->
@@ -32,24 +34,21 @@
         <div class="image-preview">
           <p>📷 Upload Leaf Image</p>
         </div>
-        <input type="file" id="imageUpload" hidden>
+
+        <input type="file" id="imageUpload" accept="image/*" hidden>
         <button class="upload-btn" onclick="uploadImage()">Upload</button>
       </div>
     </section>
 
     <!-- RESULT TAB -->
     <section id="result" class="tab">
-      <h1>🌾 Analysis Result</h1>
+      <h2 id="leafName"></h2>
 
       <div class="result-card">
-        <p><strong>Disease:</strong> Leaf Blight 🍃</p>
-        <p><strong>Recommended Pesticide:</strong> Neem Oil 🧪</p>
+        <p><strong>Disease:</strong> Leaf Blight</p>
+        <p><strong>Recommended Pesticide:</strong> Neem Oil</p>
         <p><strong>Confidence:</strong> 92%</p>
       </div>
-
-      <button class="confetti-btn" onclick="launchConfetti()">
-        🎉 Show Agriculture Effect
-      </button>
     </section>
 
   </main>
